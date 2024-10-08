@@ -5,5 +5,5 @@
     $imagenesClientes[]= new Imagen('client3.jpg','Sweety');   
     $imagenesClientes[]= new Imagen('client4.jpg','Lady');
 
-    require_once(__DIR__ . '/views/sobre.view.php');
+    require_once(__DIR__ . '/views/about.view.php');
 ?>

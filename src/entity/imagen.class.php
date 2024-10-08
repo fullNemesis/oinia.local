@@ -12,6 +12,7 @@ class Imagen {
     const RUTA_IMAGENES_PORTFOLIO = '/public/images/index/portfolio/';
     const RUTA_IMAGENES_GALERIA = '/public/images/index/gallery/';
     const RUTA_IMAGENES_CLIENTES = '/public/images/clients/';
+    const RUTA_IMAGENES_SUBIDAS= '/public/images/galeria/';
 
     function __construct($nombre = "", $descripcion = "", $categoria = "", $numVisualizaciones = 0, $numLikes = 0, $numDownloads = 0) {
         $this->id = null;
@@ -96,6 +97,9 @@ class Imagen {
 
     public function getUrlClientes() {
         return self::RUTA_IMAGENES_CLIENTES . $this->getNombre();
+    }
+    public function getUrlImagenesSubidas() {
+        return self::RUTA_IMAGENES_SUBIDAS . $this->getNombre();
     }
 }
 

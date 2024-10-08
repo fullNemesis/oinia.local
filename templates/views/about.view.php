@@ -1,6 +1,7 @@
 <?php
   require_once  'inicio.part.php';
   require_once __DIR__ . '/../../src/entity/imagen.class.php';
+  
   $imagenesClientes[] = new Imagen('client1.jpg', 'Miss Bella');
   $imagenesClientes[] = new Imagen('client2.jpg', 'Don Peno');
   $imagenesClientes[] = new Imagen('client3.jpg', 'Sweety');
