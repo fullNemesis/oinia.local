@@ -1,174 +1,92 @@
 <?php
-  require_once __DIR__ . '/inicio.part.php';
+require_once __DIR__ . '/inicio.part.php';
 ?>
 
 <!-- Navigation Bar -->
 <?php
 require_once __DIR__ . '/navegacion.part.php';
 ?>
-<!-- End of Navigation Bar -->
-
+<div class="hero hero-inner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="intro-wrap">
+                    <h1 class="mb-0">Asociados</h1>
+                    <p class="text-white">Forma parte de nuestros Partners. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Principal Content Start -->
-   <div id="blog">
-     <div class="container">
-      <div class="row">
-
-      <!-- Blocks of Posts -->
-        <div class="col-xs-12 col-sm-8 row">
-           <div class="col-xs-12 col-sm-12">
-             <div class="post">
-               <div class="post-heading">
-                 <span>6 JANUARY</span>
-                 <img class="img-responsive" src="images/blog/landscape.jpg" alt="post's picture">
-               </div>
-               <div class="post-body">
-                 <h3><a href="single_post.html"><strong>doloremque illum</strong></a></h3>
-                 <hr>
-                 <p>Duis ultrices tortor non felis convallis bibendum. Maecenas diam velit, sollicitudin at imperdiet ac, consectetur non nibh. Etiam eget dapibus nulla. 
-                 </p>
-               </div>
-               <div class="post-footer">
-                 <a class="btn" href="single_post.html">READ MORE...</a>
-                 <span>
-                 <i class="fa fa-heart sr-icons"></i> 10
-                 <i class="fa fa-comments sr-icons"></i> 10
-                 </span>
-               </div>
-             </div>
-           </div>
-           <div class="col-xs-12 col-sm-12">
-             <div class="post">
-               <div class="post-heading">
-                 <span>7 FEBRUARY</span>
-                 <img class="img-responsive" src="images/blog/family.jpg" alt="post's picture">
-               </div>
-               <div class="post-body">
-                 <h3><a href="single_post.html"><strong>Lorem ipsum</strong></a></h3>
-                 <hr>
-                 <p>Nunc sit amet dapibus est, sit amet varius risus. Donec luctus lacinia mauris, at feugiat ligula facilisis ac. Class aptent taciti sociosqu ad litora torquent per conubia.
-                 </p>
-               </div>
-               <div class="post-footer">
-                 <a class="btn" href="single_post.html">READ MORE...</a>
-                 <span>
-                 <i class="fa fa-heart sr-icons"></i> 10
-                 <i class="fa fa-comments sr-icons"></i> 10
-                 </span>
-               </div>
-             </div>
-           </div>
-           <div class="col-xs-12 col-sm-12">
-             <div class="post">
-               <div class="post-heading">
-                 <span>8 MARCH</span>
-                 <img class="img-responsive" src="images/blog/elephant.jpg" alt="post's picture">
-               </div>
-               <div class="post-body">
-                 <h3><a href="single_post.html"><strong>Aliquam soluta</strong></a></h3>
-                 <hr>
-                 <p>In felis ante, aliquet sit amet venenatis at, feugiat sed leo. Fusce pretium, velit in luctus ornare, elit lorem ultrices tortor, sed consectetur orci risus mollis ante. 
-                 </p>
-               </div>
-               <div class="post-footer">
-                 <a class="btn" href="single_post.html">READ MORE...</a>
-                 <span>
-                 <i class="fa fa-heart sr-icons"></i> 10
-                 <i class="fa fa-comments sr-icons"></i> 10
-                 </span>
-               </div>
-             </div>
-           </div>
-              <nav class="text-left">
-                <ul class="pagination">
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#" aria-label="suivant">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a></li>
-                </ul>
-              </nav>
-        </div>
-      <!-- End of Blog Post -->  
-
-      <!-- Side bar -->  
-        <div class="col-xs-12 col-sm-4">
-           <form class="form-horizontal">
-             <div class="input-group">
-               <input class="form-control" type="text" placeholder="Research">
-               <span class="input-group-btn">
-                  <a href="" class="btn"><i class="fa fa-search"></i></a>
-               </span>
-             </div>
-           </form>
-           <div class="panel">
-             <div class="panel-heading">
-               <h4>Categories</h4>
-             </div>
-             <div class="panel-body">
-               <ul class="nav">
-                 <li><a href="#">Category I</a></li>
-                 <li><a href="#">Category II</a></li>
-                 <li><a href="#">Category III</a></li>
-                 <li><a href="#">Category IV</a></li>
-                 <li class="last"><a href="#">Category V</a></li>
-               </ul>
-             </div>
-           </div>
-           <div class="well">
-             <h4>Soluta</h4>
-             <p>Quod soluta corrupti earum officia vel inventore vitae quidem, consequuntur odit impedit.</p>
-           </div>
-            <h3>Recent Posts</h3>
+<div id="asociados">
+    <div class="container">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+            <h2>Asociados:</h2>
             <hr>
-             <div class="post">
-               <div class="post-heading">
-                 <span>10 APRIL</span>
-                 <img class="img-responsive" src="images/blog/wedding.jpg" alt="post's picture">
-               </div>
-               <div class="post-body">
-                 <span>
-                 <i class="fa fa-heart sr-icons"></i> 10
-                 <i class="fa fa-comments sr-icons"></i> 10
-                 </span>
-                 <h4 class="text-left"><a href="single_post.html"><strong>Aliquam soluta</strong></a></h4>
-               </div>
-             </div>
-             <div class="post">
-               <div class="post-heading">
-                 <span>12 MAY</span>
-                 <img class="img-responsive" src="images/blog/woman.jpg" alt="post's picture">
-               </div>
-               <div class="post-body">
-                 <span>
-                 <i class="fa fa-heart sr-icons"></i> 10
-                 <i class="fa fa-comments sr-icons"></i> 10
-                 </span>
-                 <h4 class="text-left"><a href="single_post.html"><strong>Consequuntur</strong></a></h4>
-               </div>
-             </div>
+            <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
+                <div class="alert alert-<?= empty($errores) ? 'info' : 'danger'; ?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                    <?php 
+                    if (empty($errores)) : ?>
+                        <p><?= $mensaje ?></p>
+                    <?php else : ?>
+                        <ul>
+                            <?php foreach ($errores as $error) : ?>
+                                <li><?= $error ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            <?php endif; 
+            ?>
+            <!-- Formulario que permite subir una imagen con su descripción -->
+            <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
+            <form clas="form-horizontal" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="label-control">Logo</label>
+                        <input class="form-control-file" type="file" name="logo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="label-control">Nombre*</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?> " require="">
+                        <label class="label-control">Descripción</label>
+                        <textarea class="form-control" name="descripcion"><?= $descripcion ?></textarea>
+                        <!-- CAPTCAHA -->
+                        <label class="label-control">Introduce el captcha <img style="border: 1px solid #D3D0D0 " src="../../src/utils/captcha.php" id='captcha'></label>
+                        <input class="form-control" type="text" name="captcha">
+                        <button class="pull-right btn btn-lg sr-button">ENVIAR</button>
+                    </div>
+                </div>
+            </form>
+            <hr class="divider">
+            <div class="imagenes_asociados">
+            </div>
         </div>
-      <!-- End of Side bar --> 
-       
-      </div>
-     </div>
-   </div>
-<!-- End of Principal Content Start --> 
-
-<!-- Footer -->
+    </div>
+</div>
 <?php
-  require_once __DIR__ . '/fin.part.php';
+require_once __DIR__ . '/fin.part.php';
 ?>
 <!-- END Footer -->
 
 <!-- Jquery -->
-   <script type="text/javascript" src="js/jquery.min.js"></script>
-   <!-- Bootstrap core Javascript -->
-   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-   <!-- Plugins -->
-   <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-   <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-   <script type="text/javascript" src="js/scrollreveal.min.js"></script>
-   <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- Bootstrap core Javascript -->
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="js/scrollreveal.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!-- meter en fin -->
+
 </body>
+
 </html>

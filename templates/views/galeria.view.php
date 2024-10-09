@@ -31,7 +31,6 @@ require_once __DIR__ . '/navegacion.part.php';
                         <span aria-hidden="true">x</span>
                     </button>
                     <?php 
-                    $a="patata";
                     if (empty($errores)) : ?>
                         <p><?= $mensaje ?></p>
                     <?php else : ?>
