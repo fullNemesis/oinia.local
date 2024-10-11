@@ -3,7 +3,7 @@
         session_start();
         $captcha = "";
         $totalCharacteres = rand(5,8); // Longitud máxima del captcha
-        $possiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $posiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $captchaFont = "Outwrite.ttf";
         $captchaFontSize = rand(30,40); // Tamaño de la fuente
         $caracter = 0;
@@ -30,7 +30,7 @@
                 imageline($imagen,rand(0,$ancho),rand(0,$alto),rand(0,$ancho),rand(0,$alto+20),$colorNegro);
             }
         imagettftext($imagen,$captchaFontSize,0,4,$alto,$colorNegro,$captchaFont,$captcha);
-        imagepng ($imagen);
+        imagepng($imagen);
         imagedestroy($imagen);
         $_SESSION['captchaGenerado'] = $captcha; // Guardamos el captcha generado en una variable de sesión
 
