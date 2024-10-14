@@ -1,6 +1,9 @@
 <?php
 
 class Imagen {
+        /**
+    * @var string
+    */
     private $id;
     private $nombre;
     private $descripcion;

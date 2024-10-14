@@ -2,7 +2,7 @@
         header('Content-Type: image/png');
         session_start();
         $captcha = "";
-        $totalCharacteres = rand(5,8); // Longitud máxima del captcha
+        $totalCharacteres = rand(1,3); // Longitud máxima del captcha
         $posiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $captchaFont = "Outwrite.ttf";
         $captchaFontSize = rand(30,40); // Tamaño de la fuente
@@ -21,7 +21,7 @@
 
         $imagen = imagecreatetruecolor($ancho, $alto+20);
         $colorBlanco = imagecolorallocate($imagen, 255, 255, 255);
-        $colorAzul = imagecolorallocate($imagen, 0, 0, 164);
+        $colorAzul = imagecolorallocate($imagen, 0, 0, 220);
         $colorNegro = imagecolorallocate($imagen, 0,0,0);
         // Dibujamos la imagen
         imagefill($imagen, 0, 0, $colorAzul);

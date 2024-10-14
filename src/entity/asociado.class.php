@@ -1,5 +1,8 @@
 <?php 
 class Asociado {
+    /**
+    * @var string
+    */
     private $id;
     private $nombre;
     private $logo;
@@ -7,7 +10,7 @@ class Asociado {
 
     const RUTA_LOGOS_ASOCIADOS = 'public/images/asociados/';
 
-    public function __construct($nombre, $logo, $descripcion) {
+    public function __construct($nombre="", $logo="", $descripcion="") {
         $this->id = null;
         $this->nombre = $nombre;
         $this->logo = $logo;

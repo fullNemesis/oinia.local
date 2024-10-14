@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ ."/../exeptions/fileException.class.php";
+require_once __DIR__ ."/../exceptions/fileException.class.php";
 
 class File
 {  
