@@ -2,7 +2,7 @@
         header('Content-Type: image/png');
         session_start();
         $captcha = "";
-        $totalCharacteres = rand(1,3); // Longitud máxima del captcha
+        $totalCharacteres = rand(5,8); // Longitud máxima del captcha
         $posiblesLetras = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $captchaFont = "Outwrite.ttf";
         $captchaFontSize = rand(30,40); // Tamaño de la fuente
