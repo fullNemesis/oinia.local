@@ -1,11 +1,11 @@
 <?php
-    require_once __DIR__.'/../src/entity/asociado.class.php';
+    require_once __DIR__.'/../../src/entity/asociado.class.php';
     
     $asociadosLogos[] = new Asociado('About','about_us.jpg','Sobre nosotros');
     $asociadosLogos[] = new Asociado('Contacto','contact_background.jpg','Fondo contacto');
     $asociadosLogos[] = new Asociado('Contacto1','contact_background1.jpg','Fondo contacto 2');
 
-    require_once(__DIR__ . '/../src/entity/imagen.class.php');
+    require_once(__DIR__ . '/../../src/entity/imagen.class.php');
 
     $imagenesHome[] = new Imagen ('1.jpg','descripción imagen 1',1,456,610,130);
     $imagenesHome[] = new Imagen ('2.jpg','descripción imagen 2',1,456,610,130);
@@ -20,6 +20,4 @@
     $imagenesHome[] = new Imagen ('11.jpg','descripción imagen 11',1,456,610,130);
     $imagenesHome[] = new Imagen ('12.jpg','descripción imagen 12',1,456,610,130);
 
-    require_once(__DIR__ . '/views/index.view.php');
-
-?>
+    require __DIR__ . '/../views/index.view.php';
