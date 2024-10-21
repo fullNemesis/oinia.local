@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__."/IEntity.php";
 
-class Imagen {
+class Imagen implements IEntity {
         /**
     * @var string
     */
@@ -17,7 +18,7 @@ class Imagen {
     const RUTA_IMAGENES_CLIENTES = '/public/images/clients/';
     const RUTA_IMAGENES_SUBIDAS= '/public/images/galeria/';
 
-    function __construct($nombre = "", $descripcion = "", $categoria = "", $numVisualizaciones = 0, $numLikes = 0, $numDownloads = 0) {
+    function __construct($nombre = "", $descripcion = "", $categoria = 1, $numVisualizaciones = 0, $numLikes = 0, $numDownloads = 0) {
         $this->id = null;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
@@ -103,6 +104,18 @@ class Imagen {
     }
     public function getUrlImagenesSubidas() {
         return self::RUTA_IMAGENES_SUBIDAS . $this->getNombre();
+    }
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'nombre' => $this->getNombre(),
+            'descripcion' => $this->getDescripcion(),
+            'numVisualizaciones' => $this->getNumVisualizaciones(),
+            'numLikes' => $this->getNumLikes(),
+            'numDownloads' => $this->getNumDownloads(),
+            'categoria' => $this->getCategoria()
+        ];
     }
 }
 

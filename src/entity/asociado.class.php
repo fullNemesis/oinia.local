@@ -1,5 +1,7 @@
 <?php 
-class Asociado {
+require_once __DIR__."/IEntity.php";
+
+class Asociado implements IEntity {
     /**
     * @var string
     */
@@ -54,6 +56,15 @@ class Asociado {
 
     public function getUrl() {
         return self::RUTA_LOGOS_ASOCIADOS . $this->getLogo();
+    }
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'nombre' => $this->getNombre(),
+            'descripcion' => $this->getDescripcion(),
+            'logo' => $this->getLogo(),
+        ];
     }
 }
 ?>
