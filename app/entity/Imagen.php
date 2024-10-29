@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__."/IEntity.php";
+namespace dwes\app\entity;
+
+use dwes\app\entity\IEntity;
 
 class Imagen implements IEntity {
         /**

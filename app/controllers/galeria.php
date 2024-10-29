@@ -1,11 +1,10 @@
 <?php
-require_once __DIR__ . "/../../src/utils/file.class.php";
-require_once __DIR__ . "/../../src/exceptions/fileException.class.php";
-require_once __DIR__ . "/../../src/entity/imagen.class.php";
-require_once __DIR__ . "/../../src/database/Connection.class.php";
-require_once __DIR__ . "/../../src/database/QueryBuilder.class.php";
-require_once __DIR__ . "/../../src/repository/CategoriaRepository.php";
-require_once __DIR__ . "/../../src/repository/ImagenesRepository.php";
+
+use dwes\app\exceptions\QueryException;
+use dwes\app\exceptions\AppException;
+use dwes\app\repository\CategoriaRepository;
+use dwes\app\repository\ImagenesRepository;
+use  dwes\core\App;
 
 $errores = [];
 $titulo = "";

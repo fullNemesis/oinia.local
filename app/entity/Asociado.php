@@ -1,5 +1,7 @@
 <?php 
-require_once __DIR__."/IEntity.php";
+namespace dwes\app\entity;
+
+use dwes\app\entity\IEntity;
 
 class Asociado implements IEntity {
     /**
@@ -54,7 +56,7 @@ class Asociado implements IEntity {
         return $this->descripcion;
     }
 
-    public function getUrl() {
+    public function getUrlLogo() {
         return self::RUTA_LOGOS_ASOCIADOS . $this->getLogo();
     }
     public function toArray(): array

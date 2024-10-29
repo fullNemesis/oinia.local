@@ -1,11 +1,12 @@
 <?php
-require_once __DIR__ . "/../../src/utils/file.class.php";
-require_once __DIR__ . "/../../src/exceptions/fileException.class.php";
-require_once __DIR__ . "/../../src/entity/asociado.class.php";
-require_once __DIR__."/../../src/database/Connection.class.php";
-require_once __DIR__."/../../src/database/QueryBuilder.class.php";
-require_once(__DIR__ .'/../../src/repository/AsociadosRepository.php');
-
+use dwes\app\utils\File;
+use dwes\app\exceptions\FileException;
+use dwes\app\exceptions\AppException;
+use dwes\app\entity\Asociado;
+use dwes\app\database\Connection;
+use dwes\app\database\QueryBuilder;
+use dwes\app\repository\AsociadosRepository;
+use  dwes\core\App;
 
 try {
 
@@ -55,8 +56,7 @@ try {
         $descripcion = "";
         $mensaje = "";
     }
-    $queryBuilder = new QueryBuilder('asociados','Asociado');
-    $asociados = $queryBuilder->findAll();
+    $asociados = $asociadosRepository->findAll();
 
 } catch (FileException $fileException) {
     $errores[] = $fileException->getMessage();

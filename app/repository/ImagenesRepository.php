@@ -1,11 +1,12 @@
 <?php
-// require_once __DIR__ . '/../database/QueryBuilder.class.php';
-// require_once __DIR__ . "/CategoriaRepository.php";
-// require_once __DIR__ . "/../database/QueryBuilder.class.php";
-require_once __DIR__."/../repository/CategoriaRepository.php";
-require_once __DIR__."/../entity/imagen.class.php";
-require_once __DIR__."/../exceptions/QueryException.php";
-require_once __DIR__."/../exceptions/NotFoundException.php";
+namespace dwes\app\repository;
+
+use dwes\app\repository\CategoriaRepository;
+use  dwes\app\entity\Imagen;
+use dwes\app\QueryException;
+use dwes\app\NotFoundException;
+use dwes\app\entity\Categoria;
+use dwes\app\database\QueryBuilder;
 
 class ImagenesRepository extends QueryBuilder
 {
@@ -13,7 +14,7 @@ class ImagenesRepository extends QueryBuilder
      * @param string $table
      * @param string $classEntity
      */
-    public function __construct(string $table = 'imagenes', string $classEntity = 'Imagen')
+    public function __construct(string $table = 'imagenes', string $classEntity = Imagen::class)
     {
         parent::__construct($table, $classEntity);
     }

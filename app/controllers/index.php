@@ -1,11 +1,11 @@
 <?php
-    require_once __DIR__.'/../../src/entity/asociado.class.php';
+    use dwes\app\entity\Asociado;
     
-    $asociadosLogos[] = new Asociado('About','about_us.jpg','Sobre nosotros');
-    $asociadosLogos[] = new Asociado('Contacto','contact_background.jpg','Fondo contacto');
-    $asociadosLogos[] = new Asociado('Contacto1','contact_background1.jpg','Fondo contacto 2');
+    $asociadosLogos[] = new Asociado('About','log1.jpg','Sobre nosotros');
+    $asociadosLogos[] = new Asociado('Contacto','log2.jpg','Fondo contacto');
+    $asociadosLogos[] = new Asociado('Contacto1','log3.jpg','Fondo contacto 2');
 
-    require_once(__DIR__ . '/../../src/entity/imagen.class.php');
+    use  dwes\app\entity\Imagen;
 
     $imagenesHome[] = new Imagen ('1.jpg','descripción imagen 1',1,456,610,130);
     $imagenesHome[] = new Imagen ('2.jpg','descripción imagen 2',1,456,610,130);

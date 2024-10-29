@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ ."/../exceptions/fileException.class.php";
+namespace dwes\app\utils;
+
+
+use dwes\app\exceptions\FileException;
 
 class File
 {  

@@ -1,4 +1,8 @@
 <?php
+namespace dwes\app\entity;
+
+use dwes\app\entity\IEntity;
+
 class Categoria implements IEntity{
 
     private $id, $nombre, $numImagenes;

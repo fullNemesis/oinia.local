@@ -9,6 +9,8 @@
           <hr>
           <div class="text-muted text-left">
           <?php
+          use  dwes\app\utils\Utils;
+          
                     $listar = Utils::extraeElementosAleatorios($asociadosLogos, 3);  
                     foreach ($listar as $asociado) {
                 ?>

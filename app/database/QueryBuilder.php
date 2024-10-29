@@ -1,9 +1,14 @@
 <?php
-require_once __DIR__ . '/../exceptions/QueryException.php';
-require_once __DIR__ . '/../entity/imagen.class.php';
-require_once __DIR__ . "/../exceptions/NotFoundException.php";
-require_once __DIR__ . "/../exceptions/QueryException.php";
-require_once __DIR__ . "/../entity/categoria.class.php";
+namespace dwes\app\database;
+
+use dwes\app\exceptions\QueryException;
+use dwes\app\exceptions\NotFoundException;
+use dwes\app\entity\IEntity;
+use dwes\app\entity\Asociado;
+use PDO;
+use PDOException;
+use  dwes\core\App;
+use Exception;
 
 class QueryBuilder
 {
@@ -46,13 +51,8 @@ class QueryBuilder
     public function findAll(): array
     {
         $sql = "SELECT * FROM $this->table";
-
+        $a = $this->executeQuery($sql);
         return $this->executeQuery($sql);
-
-        $pdoStatement = $this->connection->prepare($sql);
-        if ($pdoStatement->execute() === false)
-            throw new QueryException("No se ha podido ejecutar la query solicitada.");
-        return $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
     }
     /**
      * @param int $id
@@ -75,12 +75,19 @@ class QueryBuilder
      */
     private function executeQuery(string $sql): array
     {
-        $pdoStatement = $this->connection->prepare($sql);
-        if ($pdoStatement->execute() === false)
+        try{
+            
+            $pdoStatement = $this->connection->prepare($sql);
+            if ($pdoStatement->execute() === false)
             throw new QueryException("No se ha podido ejecutar la query solicitada.");
         /* PDO::FETCH_CLASS indica que queremos que devuelva los datos en un array de clases. Los nombres
         de los campos de la BD deben coincidir con los nombres de los atributos de la clase.
         PDO::FETCH_PROPS_LATE hace que se llame al constructor de la clase antes que se asignen los valores. */
+        $a = $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
+    }
+    catch (Exception $e) {
+        echo $e;
+    }
         return $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
     }
     public function executeTransaction(callable $fnExecuteQuerys)

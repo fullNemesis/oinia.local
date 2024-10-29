@@ -1,10 +1,14 @@
 <?php
-require_once __DIR__ . "/../../src/utils/file.class.php";
-require_once __DIR__ . "/../../src/exceptions/fileException.class.php";
-require_once __DIR__ . "/../../src/entity/imagen.class.php";
-require_once __DIR__ . "/../../src/database/Connection.class.php";
-require_once __DIR__ . "/../../src/database/QueryBuilder.class.php";
-require_once __DIR__ . "/../../src/repository/ImagenesRepository.php";
+use dwes\app\utils\File;
+use dwes\app\exceptions\FileException;
+use dwes\app\exceptions\QueryException;
+use dwes\app\exceptions\CategoriaException;
+use dwes\app\exceptions\AppException;
+use dwes\app\entity\Imagen;
+use dwes\app\src\database\Connection;
+use dwes\app\database\QueryBuilder;
+use dwes\app\repository\ImagenesRepository;
+use  dwes\core\App;
 
 try {
 
@@ -24,7 +28,8 @@ try {
 
     $imagenGaleria = new Imagen($imagen->getFileName(), $descripcion, $categoria);
     $imagenesRepository->guarda($imagenGaleria);
-
+    App::get('logger')->add("Se ha guardado una imagen: ".$imagenGaleria->getNombre());
+    
     $mensaje = "Se ha guardado la imagen correctamente";
 
 } catch (FileException $fileException) {

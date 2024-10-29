@@ -5,6 +5,7 @@ require_once __DIR__ . '/inicio.part.php';
 <!-- Navigation Bar -->
 <?php
 require_once __DIR__ . '/navegacion.part.php';
+
 ?>
 <div class="hero hero-inner">
     <div class="container">
