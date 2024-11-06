@@ -1,10 +1,11 @@
 <?php
+
 namespace dwes\core;
 
 use dwes\app\exceptions\AppException;
 
 use dwes\app\database\Connection;
-
+use dwes\app\database\QueryBuilder;
 
 class App
 {
@@ -40,5 +41,12 @@ class App
         if (!array_key_exists('connection', static::$container))
             static::$container['connection'] = Connection::make();
         return static::$container['connection'];
+    }
+
+    public static function getRepository(string $className): QueryBuilder
+    {
+        if (! array_key_exists($className, static::$container))
+            static::$container[$className] = new $className();
+        return static::$container[$className];
     }
 }

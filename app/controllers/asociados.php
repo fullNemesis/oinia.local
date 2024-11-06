@@ -12,7 +12,7 @@ try {
 
     $conexion = App::getConnection();
     
-    $asociadosRepository = new AsociadosRepository();
+    $asociadosRepository = App::getRepository(AsociadosRepository::class);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['captcha']) && ($_POST['captcha'] != "")) {
@@ -33,14 +33,7 @@ try {
 
                 $imagenAsociado = new Asociado($nombre, $logo->getFileName(), $descripcion);
                 $asociadosRepository->save($imagenAsociado);
-
-                // if ($queryBuilder->save($asociado)) {
-                //     $descripcion = "";
-                //     $mensaje = "Se ha guardado la asociación correctamente";
-                // } else {
-                //     $errores[] = "No se ha podido guardar la asociación en la base de datos";
-                // }
-
+                
                 $mensaje = "Datos enviados"; // Todo correcto y se guardan los datos
             }
         } else {
@@ -56,7 +49,7 @@ try {
         $descripcion = "";
         $mensaje = "";
     }
-    $asociados = $asociadosRepository->findAll();
+    $asociados = App::getRepository(AsociadosRepository::class)->findAll();
 
 } catch (FileException $fileException) {
     $errores[] = $fileException->getMessage();

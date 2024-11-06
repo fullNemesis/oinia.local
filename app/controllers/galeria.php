@@ -12,15 +12,16 @@ $descripcion = "";
 $mensaje = "";
 
 try {
-   
+
     $conexion = App::getConnection();
 
-    $categoriaRepository = new CategoriaRepository();
-    $imagenesRepository = new ImagenesRepository();
+    $categoriaRepository = App::getRepository(CategoriaRepository::class);
+    $imagenesRepository = App::getRepository(ImagenesRepository::class);
 
-    $imagenes = $imagenesRepository->findAll();
-    $categorias = $categoriaRepository->findAll();
-
+    /* $imagenes = $imagenesRepository->findAll(); */
+    $imagenes = App::getRepository(ImagenesRepository::class)->findAll();
+    $categorias = App::getRepository(CategoriaRepository::class)->findAll();
+    $a = 5;
 }  catch (QueryException $queryException) {
     $errores[] = $queryException->getMessage();
 } catch (AppException $appException) {

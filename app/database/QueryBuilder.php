@@ -1,4 +1,5 @@
 <?php
+
 namespace dwes\app\database;
 
 use dwes\app\exceptions\QueryException;
@@ -75,19 +76,18 @@ class QueryBuilder
      */
     private function executeQuery(string $sql): array
     {
-        try{
-            
+        try {
+
             $pdoStatement = $this->connection->prepare($sql);
             if ($pdoStatement->execute() === false)
-            throw new QueryException("No se ha podido ejecutar la query solicitada.");
-        /* PDO::FETCH_CLASS indica que queremos que devuelva los datos en un array de clases. Los nombres
+                throw new QueryException("No se ha podido ejecutar la query solicitada.");
+            /* PDO::FETCH_CLASS indica que queremos que devuelva los datos en un array de clases. Los nombres
         de los campos de la BD deben coincidir con los nombres de los atributos de la clase.
         PDO::FETCH_PROPS_LATE hace que se llame al constructor de la clase antes que se asignen los valores. */
-        $a = $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
-    }
-    catch (Exception $e) {
-        echo $e;
-    }
+            //$a = $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
+        } catch (Exception $e) {
+            echo $e;
+        }
         return $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->classEntity);
     }
     public function executeTransaction(callable $fnExecuteQuerys)
