@@ -1,12 +1,4 @@
 
-<?php
-  require_once  'inicio.part.php';
-?>
-
-<!-- Navigation Bar -->
-<?php
-require_once 'navegacion.part.php';
-?>
 <!-- End of Navigation Bar -->
 
 <!-- Principal Content Start -->
@@ -99,11 +91,8 @@ require_once 'navegacion.part.php';
    </div><!-- End of index box -->
 
    <!-- Footer -->
-   <?php
-    require_once __DIR__ . '/fin.part.php';
-   ?>
+  
    <!-- END Footer -->
 
    <!-- Jquery -->
-</body>
-</html>
+

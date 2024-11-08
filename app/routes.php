@@ -1,13 +1,16 @@
 <?php
 
-    $router->get ('','app/controllers/index.php');
-    $router->get ('about','app/controllers/about.php');
-    $router->get ('asociados','app/controllers/asociados.php');
-    $router->get ('blog','app/controllers/blog.php');
-    $router->get ('contact','app/controllers/contact.php');
-    $router->get ('galeria','app/controllers/galeria.php');
-    $router->get('post','app/controllers/single_post.php');
-    $router->post('galeria/nueva','app/controllers/galeria_nueva.php');
-    $router->post('contact/enviar','app/controllers/contact-enviar.php');
+    $router->get ('', 'PagesController@index');
+    $router->get ('about', 'PagesController@about');
+    $router->get ('asociados','AsociadosController@asociados');
+    $router->get ('blog', 'PagesController@blog');
+    $router->get ('contact','ContactoController@contact');
+    $router->get ('galeria', 'GaleriaController@galeria');
+    $router->get('post', 'PagesController@post');
+    $router->post('galeria/nueva', 'GaleriaController@galeriaNueva');
+    $router->get ('galeria/:id', 'GaleriaController@show');
+    $router->post('asociados/nuevo', 'AsociadosController@asociadosNuevo');
+    $router->post('single_post', 'AsociadosController@post');
+    $router->post('contact/enviar','ContactoController@contactEnviar');
 
 

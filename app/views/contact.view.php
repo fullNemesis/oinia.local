@@ -1,11 +1,4 @@
-<?php
-require_once __DIR__ . '/inicio.part.php';
-?>
 
-<!-- Navigation Bar -->
-<?php
-require_once __DIR__ . '/navegacion.part.php';
-?>
 <!-- End of Navigation Bar -->
 
 <!-- Principal Content Start -->
@@ -69,7 +62,7 @@ require_once __DIR__ . '/navegacion.part.php';
 				<h3>GET IN TOUCH</h3>
 				<hr>
 				<p>Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero.</p>
-				<div class="ending text-center">
+				<!-- <div class="ending text-center">
 					<ul class="list-inline social-buttons">
 						<li><a href="#"><i class="fa fa-facebook sr-icons"></i></a>
 						</li>
@@ -83,22 +76,10 @@ require_once __DIR__ . '/navegacion.part.php';
 						<li><i class="fa fa-envelope sr-icons"></i> kouvenceslas93@gmail.com</li>
 					</ul>
 					<p>Photography Fanatic Template &copy; 2017</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </div>
 <!-- Principal Content Start -->
 
-<!-- Jquery -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<!-- Bootstrap core Javascript -->
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<!-- Plugins -->
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="js/scrollreveal.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-</body>
-
-</html>
