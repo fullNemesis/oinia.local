@@ -25,24 +25,9 @@ require_once __DIR__ . '/navegacion.part.php';
             <h2>Asociados:</h2>
             <hr>
             <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-                <div class="alert alert-<?= empty($errores) ? 'info' : 'danger'; ?> alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                    <?php 
-                    if (empty($errores)) : ?>
-                        <p><?= $mensaje ?></p>
-                    <?php else : ?>
-                        <ul>
-                            <?php foreach ($errores as $error) : ?>
-                                <li><?= $error ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
-                </div>
-            <?php endif; 
-            ?>
+             
+            <?php include __DIR__ . '/show-error.part.view.php'; ?>
+
             <!-- Formulario que permite subir una imagen con su descripción -->
             <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
             <form clas="form-horizontal" action="asociados/nuevo" method="post" enctype="multipart/form-data">
@@ -55,12 +40,12 @@ require_once __DIR__ . '/navegacion.part.php';
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="label-control">Nombre*</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?> " require="">
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre?> " require="">
                         <label class="label-control">Descripción</label>
                         <textarea class="form-control" name="descripcion"><?= $descripcion ?></textarea>
                         <!-- CAPTCAHA -->
-                        <label class="label-control">Introduce el captcha <img style="border: 1px solid #D3D0D0 " src="../../src/utils/captcha.php" id='captcha'></label>
-                        <input class="form-control" type="text" name="captcha">
+                       <!--  <label class="label-control">Introduce el captcha <img style="border: 1px solid #D3D0D0 " src="../../src/utils/captcha.php" id='captcha'></label>
+                        <input class="form-control" type="text" name="captcha"> -->
                         <button class="pull-right btn btn-lg sr-button">ENVIAR</button>
                     </div>
                 </div>

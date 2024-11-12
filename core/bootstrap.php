@@ -4,7 +4,7 @@
     use  dwes\core\Router;
 
     require __DIR__ . '/../vendor/autoload.php';
-
+    Session_start();
     $config = require_once __DIR__ . '/../app/config.php';
     
     App::bind('config',$config); // Guardamos la configuración en el contenedor de servicios
