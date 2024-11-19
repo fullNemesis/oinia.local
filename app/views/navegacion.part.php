@@ -38,14 +38,27 @@ use  dwes\app\utils\Utils;
 			  <?php if (Utils::esOpcionMenuActiva('/contact')==true)
                       echo '<li class="active lien">'; else echo '<li class="0lien">';?>
 				<a href="contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
+        <?php if (is_null($app['user'])) : ?>
+  
+        <?php if (Utils::esOpcionMenuActiva('/login') == true) echo '<li class="active lien">';
+          else echo '<li class=" lien">'; ?>
+        <a href="/login"><i class="fa fa-user-secret sr-icons"></i> Login</a></li>
+        <li class="<?= Utils::esOpcionMenuActiva('/registro') ? 'active' : '' ?> lien">
+          <a href="<?= Utils::esOpcionMenuActiva('/registro') ? '#' : '/registro' ?>">
+          <i class="fa fa-sign-in sr-icons"></i> Registro</a></li>
+        <?php else : ?>
         <?php if (Utils::esOpcionMenuActiva('/galeria')==true)
                       echo '<li class="active lien">'; else echo '<li class="0lien">';?>
 				<a href="galeria"><i class="fa fa-bookmark sr-icons"></i> Galeria</a>
         <?php if (Utils::esOpcionMenuActiva('/asociados')==true)
                       echo '<li class="active lien">'; else echo '<li class="0lien">';?>
 				<a href="asociados"><i class="fa fa-bookmark sr-icons"></i> Asociados</a>
+        <?php if (Utils::esOpcionMenuActiva('/logout') == true) echo '<li class="active lien">';
+          else echo '<li class=" lien">'; ?>
+        <a href="/logout"><i class="fa fa-sign-out sr-icons"></i> <?= $app['user']->getUsername() ?></a></li>
+        <?php endif; ?>
 			  </li>
             </ul>
-         </div>
+        </div>
      </div>
    </nav>
