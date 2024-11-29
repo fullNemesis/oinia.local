@@ -1,5 +1,5 @@
 <?php
-namespace dwes\app\entity;
+namespace oinia\app\entity;
 
     interface IEntity{
         public function toArray(): array;

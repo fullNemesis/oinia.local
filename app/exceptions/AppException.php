@@ -1,9 +1,9 @@
 <?php
 
-namespace dwes\app\exceptions;
+namespace oinia\app\exceptions;
 
 use Exception;
-use dwes\core\Response;
+use oinia\core\Response;
 
 class AppException extends Exception
 {

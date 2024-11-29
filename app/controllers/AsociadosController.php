@@ -1,17 +1,17 @@
 <?php
 
-namespace dwes\app\controllers;
+namespace oinia\app\controllers;
 
-use dwes\app\utils\File;
-use dwes\app\exceptions\FileException;
-use dwes\app\exceptions\AppException;
-use dwes\app\entity\Asociado;
-use dwes\app\database\Connection;
-use dwes\app\database\QueryBuilder;
-use dwes\app\repository\AsociadosRepository;
-use  dwes\core\App;
-use dwes\core\Response;
-use dwes\core\helpers\FlashMessage;
+use oinia\app\utils\File;
+use oinia\app\exceptions\FileException;
+use oinia\app\exceptions\AppException;
+use oinia\app\entity\Asociado;
+use oinia\app\database\Connection;
+use oinia\app\database\QueryBuilder;
+use oinia\app\repository\AsociadosRepository;
+use  oinia\core\App;
+use oinia\core\Response;
+use oinia\core\helpers\FlashMessage;
 
 class AsociadosController
 {

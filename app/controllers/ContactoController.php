@@ -1,15 +1,15 @@
 <?php
 
-namespace dwes\app\controllers;
+namespace oinia\app\controllers;
 
-use dwes\app\repository\ImagenesRepository;
-use  dwes\core\App;
-use dwes\app\repository\AsociadosRepository;
-use dwes\core\Response;
-use dwes\app\entity\Asociado;
-use  dwes\app\entity\Imagen;
-use dwes\app\exceptions\MailException;
-use dwes\app\utils\MyMail;
+use oinia\app\repository\ImagenesRepository;
+use  oinia\core\App;
+use oinia\app\repository\AsociadosRepository;
+use oinia\core\Response;
+use oinia\app\entity\Asociado;
+use  oinia\app\entity\Imagen;
+use oinia\app\exceptions\MailException;
+use oinia\app\utils\MyMail;
 
 
 class ContactoController
@@ -32,24 +32,25 @@ class ContactoController
         $mensaje = "";
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $nombre = trim(htmlspecialchars($_POST['nombre'])) ?? "";
-                $apellidos = trim(htmlspecialchars($_POST['apellidos'])) ?? "";
-                $email = trim(htmlspecialchars($_POST['email'])) ?? "";
-                $asunto = trim(htmlspecialchars($_POST['asunto'])) ?? "";
-                $mensaje = trim(htmlspecialchars($_POST['mensaje'])) ?? "";
-                if ($nombre != "" && $email != "" && $asunto != "") {
-                    $mail = new MyMail();
-                    $mail->send($email, $nombre . ' ' . $apellidos, $asunto, $mensaje);
+                $nombre = trim(htmlspecialchars($_POST['Name'])) ?? "";
+               /*  $apellidos = trim(htmlspecialchars($_POST['apellidos'])) ?? ""; */
+                $email = trim(htmlspecialchars($_POST['Email'])) ?? "";
+                $telefono = trim(htmlspecialchars($_POST['Phone'])) ?? "";
+                $mensaje = trim(htmlspecialchars($_POST['Message'])) ?? "";
+                if ($nombre != "" && $email != "" && $telefono != "" && $mensaje != "") {
+                    $email = new MyMail();
+                    $email->send($email, $nombre . ' ' . $telefono, 'Mensaje contacto web', $mensaje);
                     $mensaje = "Mensaje enviado correctamente.";
                 } else {
-                    $mensaje = "Faltan campos por rellenar: Nombre, Email y Asunto.";
+                    $mensaje = "Faltan campos por rellenar.";
                 }
             }
         } catch (MailException $mailException) {
             $mensaje = $mailException->getMessage();
         }
         
-        App::get('router')->redirect('contact');
+        Response::renderView('contact', 'layout', ['mensaje' => $mensaje]);
+        // App::get('router')->redirect('contact');
 
     }
 }

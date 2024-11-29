@@ -1,6 +1,6 @@
 <?php
 
-namespace dwes\app\utils;
+namespace oinia\app\utils;
 
 class Utils
 {

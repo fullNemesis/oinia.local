@@ -1,8 +1,8 @@
 <?php
-namespace dwes\app\repository;
+namespace oinia\app\repository;
 
-use dwes\app\database\QueryBuilder;
-use dwes\app\entity\Categoria;
+use oinia\app\database\QueryBuilder;
+use oinia\app\entity\Categoria;
 
 
 class CategoriaRepository extends QueryBuilder

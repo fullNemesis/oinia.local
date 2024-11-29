@@ -1,6 +1,6 @@
 <?php
 
-namespace dwes\core\helpers;
+namespace oinia\core\helpers;
 
 class FlashMessage
 {

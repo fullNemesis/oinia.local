@@ -1,14 +1,14 @@
 <?php
 
-namespace dwes\app\database;
+namespace oinia\app\database;
 
-use dwes\app\exceptions\QueryException;
-use dwes\app\exceptions\NotFoundException;
-use dwes\app\entity\IEntity;
-use dwes\app\entity\Asociado;
+use oinia\app\exceptions\QueryException;
+use oinia\app\exceptions\NotFoundException;
+use oinia\app\entity\IEntity;
+use oinia\app\entity\Asociado;
 use PDO;
 use PDOException;
-use  dwes\core\App;
+use  oinia\core\App;
 use Exception;
 
 class QueryBuilder

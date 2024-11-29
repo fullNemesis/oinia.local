@@ -1,18 +1,18 @@
 <?php
 
-namespace dwes\app\controllers;
+namespace oinia\app\controllers;
 
-use dwes\core\Response;
-use  dwes\core\App;
-use dwes\app\repository\ImagenesRepository;
-use  dwes\app\entity\Imagen;
-use dwes\app\exceptions\CategoriaException;
-use dwes\app\utils\File;
-use dwes\app\exceptions\FileException;
-use dwes\app\exceptions\QueryException;
-use dwes\app\exceptions\AppException;
-use dwes\app\repository\CategoriaRepository;
-use dwes\core\helpers\FlashMessage;
+use oinia\core\Response;
+use  oinia\core\App;
+use oinia\app\repository\ImagenesRepository;
+use  oinia\app\entity\Imagen;
+use oinia\app\exceptions\CategoriaException;
+use oinia\app\utils\File;
+use oinia\app\exceptions\FileException;
+use oinia\app\exceptions\QueryException;
+use oinia\app\exceptions\AppException;
+use oinia\app\repository\CategoriaRepository;
+use oinia\core\helpers\FlashMessage;
 
 class GaleriaController
 {

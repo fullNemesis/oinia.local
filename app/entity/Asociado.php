@@ -1,7 +1,7 @@
 <?php 
-namespace dwes\app\entity;
+namespace oinia\app\entity;
 
-use dwes\app\entity\IEntity;
+use oinia\app\entity\IEntity;
 
 class Asociado implements IEntity {
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace dwes\core;
+namespace oinia\core;
 
-use dwes\app\exceptions\NotFoundException;
-use  dwes\app\exceptions\AuthenticationException;
+use oinia\app\exceptions\NotFoundException;
+use  oinia\app\exceptions\AuthenticationException;
 
 class Router
 {

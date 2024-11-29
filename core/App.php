@@ -1,11 +1,11 @@
 <?php
 
-namespace dwes\core;
+namespace oinia\core;
 
-use dwes\app\exceptions\AppException;
+use oinia\app\exceptions\AppException;
 
-use dwes\app\database\Connection;
-use dwes\app\database\QueryBuilder;
+use oinia\app\database\Connection;
+use oinia\app\database\QueryBuilder;
 
 class App
 {

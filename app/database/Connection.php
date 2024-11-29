@@ -1,8 +1,8 @@
 <?php
-namespace dwes\app\database;
+namespace oinia\app\database;
 
-use  dwes\core\App;
-use dwes\app\exceptions\AppException;
+use  oinia\core\App;
+use oinia\app\exceptions\AppException;
 use PDO;
 use PDOException;
 

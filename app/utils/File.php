@@ -1,8 +1,8 @@
 <?php
-namespace dwes\app\utils;
+namespace oinia\app\utils;
 
 
-use dwes\app\exceptions\FileException;
+use oinia\app\exceptions\FileException;
 
 class File
 {  

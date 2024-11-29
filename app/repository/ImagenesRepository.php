@@ -1,13 +1,13 @@
 <?php
-namespace dwes\app\repository;
+namespace oinia\app\repository;
 
-use dwes\app\repository\CategoriaRepository;
-use  dwes\app\entity\Imagen;
-use dwes\app\QueryException;
-use dwes\app\NotFoundException;
-use dwes\app\entity\Categoria;
-use dwes\app\database\QueryBuilder;
-use  dwes\core\App;
+use oinia\app\repository\CategoriaRepository;
+use  oinia\app\entity\Imagen;
+use oinia\app\QueryException;
+use oinia\app\NotFoundException;
+use oinia\app\entity\Categoria;
+use oinia\app\database\QueryBuilder;
+use  oinia\core\App;
 
 class ImagenesRepository extends QueryBuilder
 {

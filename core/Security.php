@@ -1,8 +1,8 @@
 <?php
 
-namespace dwes\core;
+namespace oinia\core;
 
-use dwes\core\App;
+use oinia\core\App;
 
 class Security
 {

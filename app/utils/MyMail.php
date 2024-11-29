@@ -1,12 +1,12 @@
 <?php
 
-namespace dwes\app\utils;
+namespace oinia\app\utils;
 
-use dwes\core\App;
+use oinia\core\App;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-use dwes\app\exceptions\MailException;
+use oinia\app\exceptions\MailException;
 
 class MyMail
 {

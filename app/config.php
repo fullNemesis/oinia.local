@@ -28,7 +28,7 @@ return [
         'filename' => 'routes.php'
     ],
     'project' => [
-        'namespace' => 'dwes'
+        'namespace' => 'oinia'
     ],
     'security' => [
         'roles' => [

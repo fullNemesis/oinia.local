@@ -1,5 +1,5 @@
 <?php
-namespace dwes\app\utils;
+namespace oinia\app\utils;
 
 use Monolog;
 use Monolog\Logger;

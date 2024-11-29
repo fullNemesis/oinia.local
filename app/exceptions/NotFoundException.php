@@ -1,6 +1,6 @@
 <?php
 
-namespace dwes\app\exceptions;
+namespace oinia\app\exceptions;
 
 use Exception;
 

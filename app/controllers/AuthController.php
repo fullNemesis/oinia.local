@@ -1,14 +1,14 @@
 <?php
 
-namespace dwes\app\controllers;
+namespace oinia\app\controllers;
 
-use  dwes\core\App;
-use dwes\core\Response;
-use dwes\core\Security;
-use dwes\app\entity\Usuario;
-use dwes\core\helpers\FlashMessage;
-use dwes\app\repository\UsuarioRepository;
-use dwes\app\exceptions\ValidationException;
+use  oinia\core\App;
+use oinia\core\Response;
+use oinia\core\Security;
+use oinia\app\entity\Usuario;
+use oinia\core\helpers\FlashMessage;
+use oinia\app\repository\UsuarioRepository;
+use oinia\app\exceptions\ValidationException;
 
 class AuthController
 {

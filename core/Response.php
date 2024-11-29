@@ -1,6 +1,6 @@
 <?php
 
-namespace dwes\core;
+namespace oinia\core;
 
 class Response
 {
