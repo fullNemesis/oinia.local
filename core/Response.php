@@ -4,15 +4,29 @@ namespace oinia\core;
 
 class Response
 {
-
-    public static function renderView(string $name, string $layout = 'layout', array $data = [])
+    public static function redirect(string $url)
     {
-        // Creamos variables con el contenido del array
-        extract($data); // El nombre de las variables serán las claves del array
-        $app['user'] = App::get('appUser');
-        ob_start(); // Las salidas se guardan en un buffer intermedio.
-        require __DIR__ . "/../app/views/$name.view.php"; // Obtenemos el archivo de la vista
-        $mainContent = ob_get_clean(); // Recuperamos el contenido del buffer
-        require __DIR__ . "/../app/views/$layout.view.php";
+        header('Location: /' . $url);
+        exit();
+    }
+
+    public static function renderView(string $name, string $layout = '', array $data = [])
+    {
+        // Asegurarnos de que $appUser esté disponible en todas las vistas
+        if (!isset($data['appUser'])) {
+            $data['appUser'] = App::get('appUser');
+        }
+        
+        extract($data);
+        
+        ob_start();
+        require __DIR__ . "/../app/views/$name.view.php";
+        $content = ob_get_clean();
+        
+        if ($layout) {
+            require __DIR__ . "/../app/views/layouts/$layout.view.php";
+        } else {
+            echo $content;
+        }
     }
 }

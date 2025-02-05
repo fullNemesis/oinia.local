@@ -21,25 +21,34 @@ class PagesController
         $asociadosLogos = App::getRepository(AsociadosRepository::class)->findAll();  */
         Response::renderView(
             'index',
-            'layout'
+            'layout',
+            [
+                'appUser' => App::get('appUser')
+            ]
             /* compact ( 'imagenesHome','asociadosLogos') */
             );
            
     }
 
-    public function languges()
+    public function languages()
     {
-        Response::renderView('languges', 'layout');
+        Response::renderView('languages', 'layout', [
+            'appUser' => App::get('appUser')
+        ]);
     }
 
     public function services()
     {
-        Response::renderView('services', 'layout');
+        Response::renderView('services', 'layout', [
+            'appUser' => App::get('appUser')
+        ]);
     }
 
     public function events()
     {
-        Response::renderView('events', 'layout');
+        Response::renderView('events', 'layout', [
+            'appUser' => App::get('appUser')
+        ]);
     }
 
 }

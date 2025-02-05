@@ -4,6 +4,9 @@
         "phpmailer/phpmailer": "^6.9"
     },
     "autoload": {
-        "psr-4": { "oinia\\": "" }
+        "psr-4": {
+            "oinia\\app\\": "app/",
+            "oinia\\core\\": "core/"
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 return [
     'database' => [
-        'name' => 'cursophp',
+        'name' => 'cursooina',
         'username' => 'usercurso',
         'password' => 'php',
         'connection' => 'mysql:host=localhost',
@@ -38,3 +38,5 @@ return [
         ]
     ]
 ];
+
+define('BASE_URL', 'http://oinia.local:8080');

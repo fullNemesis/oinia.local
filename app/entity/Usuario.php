@@ -37,23 +37,20 @@ class Usuario implements IEntity {
         return $this;
     }
 
-    public function setLogo($password): Usuario {
+    public function setPassword($password): Usuario {
         $this->password = $password;
         return $this;
     }
 
-    public function getRole() {
-        return $this->role;
+    public function getRole(): ?string {
+        return $this->role ?? null;
     }
 
-    public function setRole($role): string {
+    public function setRole($role): Usuario {
         $this->role = $role;
         return $this;
     }
-    public function setPassword($password): string {
-        $this->password = $password;
-        return $this;
-    }
+
     public function __toString(): string {
         return $this->getUsername();
     }
@@ -66,6 +63,13 @@ class Usuario implements IEntity {
             'password' => $this->getPassword(),
             'role' => $this->getRole(),
         ];
+    }
+
+    public function hasRole(string $role): bool {
+        if (!isset($this->role)) {
+            return false;
+        }
+        return $this->role === $role;
     }
 }
 ?>

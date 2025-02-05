@@ -22,24 +22,47 @@ class AuthController
     public function checkLogin()
     {
         try {
-            if (!isset($_POST['username']) || empty($_POST['username']))
+            if (!isset($_POST['username']) || empty($_POST['username'])) {
                 throw new ValidationException('Debes introducir el usuario y el password');
+            }
+            
             FlashMessage::set('username', $_POST['username']);
-            if (!isset($_POST['password']) || empty($_POST['password']))
+            
+            if (!isset($_POST['password']) || empty($_POST['password'])) {
                 throw new ValidationException('Debes introducir el usuario y el password');
+            }
+
+            // Log para depuración
+            App::get('logger')->add("Intento de login - Usuario: " . $_POST['username']);
+            
             $usuario = App::getRepository(UsuarioRepository::class)->findOneBy([
                 'username' => $_POST['username']
             ]);
-            if (!is_null($usuario)&& Security::checkPassword($_POST['password'], $usuario->getPassword())) {
-                // Guardamos el usuario en la sesión y redireccionamos a la página principal
-                $_SESSION['loguedUser'] = $usuario->getId();
-                FlashMessage::unset('username');
-                App::get('router')->redirect('');
+
+            if (is_null($usuario)) {
+                App::get('logger')->add("Usuario no encontrado: " . $_POST['username']);
+                throw new ValidationException('El usuario y el password introducidos no existen');
             }
+
+            // Log para depuración
+            App::get('logger')->add("Password proporcionado: " . $_POST['password']);
+            App::get('logger')->add("Password almacenado: " . $usuario->getPassword());
+            
+            if (Security::checkPassword($_POST['password'], $usuario->getPassword())) {
+                // Guardamos el usuario completo en la sesión
+                $_SESSION['loguedUser'] = $usuario->getId();
+                $_SESSION['userRole'] = $usuario->getRole();
+                FlashMessage::unset('username');
+                App::get('logger')->add("Login exitoso para usuario: " . $usuario->getUsername());
+                Response::redirect('');
+            }
+
+            App::get('logger')->add("Contraseña incorrecta para usuario: " . $usuario->getUsername());
             throw new ValidationException('El usuario y el password introducidos no existen');
+
         } catch (ValidationException $validationException) {
             FlashMessage::set('login-error', [$validationException->getMessage()]);
-            App::get('router')->redirect('login'); // Redireccionamos al login
+            Response::redirect('login');
         }
     }
 
@@ -48,8 +71,9 @@ class AuthController
         if (isset($_SESSION['loguedUser'])) {
             $_SESSION['loguedUser'] = null;
             unset($_SESSION['loguedUser']);
+            unset($_SESSION['userRole']);
         }
-        App::get('router')->redirect('login');
+        Response::redirect('login');
     }
 
     public function registro()
@@ -70,7 +94,6 @@ class AuthController
                 throw new ValidationException('El password de usuario no puede estar vacío');
             if (!isset($_POST['re-password']) || empty($_POST['re-password']) || $_POST['password'] !== $_POST['re-password'])
                 throw new ValidationException('Los dos password deben ser iguales');
-           /*  $password = $_POST['password']; */
             $usuario = new Usuario();
             $usuario->setUsername($_POST['username']);
             $usuario->setRole('ROLE_USER');
@@ -81,10 +104,10 @@ class AuthController
             $mensaje = "Se ha creado el usuario: " . $usuario->getUsername();
             App::get('logger')->add($mensaje);
             FlashMessage::set('mensaje', $mensaje);
-            App::get('router')->redirect('login');
+            Response::redirect('login');
         } catch (ValidationException $validationException) {
             FlashMessage::set('registro-error', [$validationException->getMessage()]);
-            App::get('router')->redirect('registro');
+            Response::redirect('registro');
         }
     }
 }

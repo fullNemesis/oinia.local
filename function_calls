@@ -1,0 +1,174 @@
+<invoke name="edit_file">
+<parameter name="target_file">app/controllers/CursosController.php</parameter>
+<parameter name="instructions">Voy a corregir los errores del linter asegurándome de que todos los métodos estén definidos en los repositorios</parameter>
+<parameter name="code_edit"><?php
+namespace oinia\app\controllers;
+
+use oinia\core\App;
+use oinia\core\Response;
+use oinia\app\entity\Curso;
+use oinia\app\entity\Inscripcion;
+use oinia\core\helpers\FlashMessage;
+use oinia\app\repository\CursoRepository;
+use oinia\app\repository\IdiomaRepository;
+use oinia\app\repository\InscripcionRepository;
+use oinia\app\exceptions\ValidationException;
+use oinia\app\exceptions\NotFoundException;
+
+class CursosController {
+    public function cursos() {
+        // Verificar si el usuario está logueado
+        if (is_null(App::get('appUser'))) {
+            Response::redirect('/login');
+            return;
+        }
+
+        $cursoRepository = App::getRepository(CursoRepository::class);
+        $idiomaRepository = App::getRepository(IdiomaRepository::class);
+        
+        // Si hay un filtro por idioma, usarlo
+        if (isset($_GET['idioma'])) {
+            $cursos = $cursoRepository->findBy(['idioma_id' => $_GET['idioma'], 'activo' => true]);
+        } else {
+            $cursos = $cursoRepository->findBy(['activo' => true]);
+        }
+        
+        $idiomas = $idiomaRepository->findBy(['activo' => true]);
+
+        Response::renderView('cursos', 'layout', [
+            'cursos' => $cursos,
+            'idiomas' => $idiomas
+        ]);
+    }
+
+    public function nuevoCurso() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $this->validarDatosCurso($_POST);
+                
+                $curso = new Curso();
+                $curso->setNombre($_POST['nombre']);
+                $curso->setIdiomaId($_POST['idioma_id']);
+                $curso->setDescripcion($_POST['descripcion']);
+                $curso->setNivel($_POST['nivel']);
+                $curso->setFechaInicio(new \DateTime($_POST['fecha_inicio']));
+                $curso->setFechaFin(new \DateTime($_POST['fecha_fin']));
+                $curso->setPlazas($_POST['plazas']);
+                $curso->setPrecio($_POST['precio']);
+                $curso->setActivo(true);
+                
+                App::getRepository(CursoRepository::class)->save($curso);
+                
+                FlashMessage::set('mensaje', 'Curso creado correctamente');
+                Response::redirect('/cursos');
+                return;
+            } catch (ValidationException $e) {
+                FlashMessage::set('errores', [$e->getMessage()]);
+                $idiomas = App::getRepository(IdiomaRepository::class)->findBy(['activo' => true]);
+                Response::renderView('nuevo-curso', 'layout', compact('idiomas'));
+            }
+        } else {
+            $idiomas = App::getRepository(IdiomaRepository::class)->findBy(['activo' => true]);
+            Response::renderView('nuevo-curso', 'layout', compact('idiomas'));
+        }
+    }
+
+    public function inscribirse($id) {
+        try {
+            $curso = App::getRepository(CursoRepository::class)->find($id);
+            $usuario = App::get('appUser');
+            
+            // Verificar si el usuario ya tiene una inscripción activa
+            $inscripcionesUsuario = App::getRepository(InscripcionRepository::class)
+                ->findBy(['usuario_id' => $usuario->getId(), 'estado' => ['pendiente', 'confirmado']]);
+            
+            if (!empty($inscripcionesUsuario)) {
+                throw new ValidationException('Ya tienes una inscripción activa en otro curso');
+            }
+            
+            // Verificar si hay plazas disponibles
+            $inscripcionesActivas = App::getRepository(InscripcionRepository::class)
+                ->findBy(['curso_id' => $curso->getId(), 'estado' => ['pendiente', 'confirmado']]);
+            
+            if (count($inscripcionesActivas) >= $curso->getPlazas()) {
+                throw new ValidationException('No hay plazas disponibles en este curso');
+            }
+            
+            $inscripcion = new Inscripcion();
+            $inscripcion->setUsuarioId($usuario->getId());
+            $inscripcion->setCursoId($curso->getId());
+            $inscripcion->setEstado('pendiente');
+            
+            App::getRepository(InscripcionRepository::class)->save($inscripcion);
+            
+            FlashMessage::set('mensaje', 'Te has inscrito correctamente en el curso');
+            Response::redirect('mis-cursos');
+            return;
+        } catch (ValidationException $e) {
+            FlashMessage::set('error', $e->getMessage());
+            Response::redirect('cursos');
+            return;
+        }
+    }
+
+    public function misCursos() {
+        $usuario = App::get('appUser');
+        $inscripciones = App::getRepository(InscripcionRepository::class)
+            ->findBy(['usuario_id' => $usuario->getId()]);
+        Response::renderView('mis-cursos', 'layout', compact('inscripciones'));
+    }
+
+    public function verCurso($id) {
+        try {
+            $curso = App::getRepository(CursoRepository::class)->find($id);
+            $idioma = App::getRepository(IdiomaRepository::class)->find($curso->getIdiomaId());
+            
+            // Obtener el número de plazas disponibles
+            $inscripcionesActivas = App::getRepository(InscripcionRepository::class)
+                ->findBy(['curso_id' => $curso->getId(), 'estado' => ['pendiente', 'confirmado']]);
+            $plazasDisponibles = $curso->getPlazas() - count($inscripcionesActivas);
+            
+            Response::renderView('curso', 'layout', compact('curso', 'idioma', 'plazasDisponibles'));
+        } catch (NotFoundException $e) {
+            FlashMessage::set('error', 'El curso solicitado no existe');
+            Response::redirect('cursos');
+            return;
+        }
+    }
+
+    private function validarDatosCurso($datos) {
+        if (empty($datos['nombre'])) {
+            throw new ValidationException('El nombre del curso es obligatorio');
+        }
+        if (empty($datos['idioma_id'])) {
+            throw new ValidationException('Debes seleccionar un idioma');
+        }
+        if (empty($datos['descripcion'])) {
+            throw new ValidationException('La descripción es obligatoria');
+        }
+        if (empty($datos['nivel'])) {
+            throw new ValidationException('El nivel es obligatorio');
+        }
+        if (empty($datos['fecha_inicio'])) {
+            throw new ValidationException('La fecha de inicio es obligatoria');
+        }
+        if (empty($datos['fecha_fin'])) {
+            throw new ValidationException('La fecha de fin es obligatoria');
+        }
+        if (empty($datos['plazas']) || $datos['plazas'] < 1) {
+            throw new ValidationException('El número de plazas debe ser mayor que 0');
+        }
+        if (empty($datos['precio']) || $datos['precio'] < 0) {
+            throw new ValidationException('El precio no puede ser negativo');
+        }
+        
+        $fechaInicio = new \DateTime($datos['fecha_inicio']);
+        $fechaFin = new \DateTime($datos['fecha_fin']);
+        
+        if ($fechaFin <= $fechaInicio) {
+            throw new ValidationException('La fecha de fin debe ser posterior a la fecha de inicio');
+        }
+    }
+}</parameter>
+<parameter name="blocking">true</parameter>
+</invoke> 
